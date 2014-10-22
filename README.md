@@ -28,7 +28,7 @@ https://github.com/RadiusNetworks/campaignkit-reference-android
 ##Getting Started
 
 
-1) If you haven't downloaded the Campaign Kit Library and set it up as a dependent library to your project, please [do that first](https://github.com/RadiusNetworks/campaignkit-documentation/download.md).
+1) If you haven't downloaded the Campaign Kit Library and set it up as a dependent library to your project, please [do that first](https://github.com/RadiusNetworks/campaignkit-documentation/blob/master/docs/android/download.md).
 
 
 2) Implement CampaignKitNotifier and CampaignKitManager
