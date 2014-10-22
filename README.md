@@ -1,3 +1,4 @@
+
 #Campaign Kit Library for Android Client
 
 Requirements for use: 
@@ -6,46 +7,37 @@ Requirements for use:
 
 * Google Play Services library set as a dependency if using Geofencing features.
 
+* CampaignKit.properties file downloaded from campaignkit.radiusnetworks.com.
 
 
 
 
-##If Using Android Studio (we recommend Android Studio v0.8.6 with gradle 1.12):
+##Sample Reference Apps
+
+We've created some simple apps that demonstrate usage of the Campaign Kit Library.
+
+For Android Studio users:
+https://github.com/RadiusNetworks/campaignkit-reference-android-studio
+
+For Eclipse users:
+https://github.com/RadiusNetworks/campaignkit-reference-android
 
 
-1) Download the [.aar library file](https://s3.amazonaws.com/campaignkit-android/campaignkit-android-0.0.2.aar)
- 
-
-2) Add the library as a dependency to your project
-
- * Drag and drop the .aar file into your Android Studio Project's "libs" folder. This should be next to your "src" folder. If there is no "libs" folder, create one. 
-
- * Next to your "src" and "libs" folder, there should be a build.gradle file. Open that and include the following:
-
-```java
-  dependencies {
-      compile fileTree(dir: 'libs', include: ['*.jar'])
-      compile 'com.radiusnetworks:campaignkit-android:0+@aar'
-  }
-
-  repositories {
-      mavenCentral()
-      flatDir {
-          dirs 'libs'
-      }
-  }
-```
-
- * On the top bar of Android Studio click the "Build" drop down, and select "Rebuild project".
 
 
-3) Implement CampaignKitNotifier and CampaignKitManager
+##Getting Started
+
+
+1) If you haven't downloaded the Campaign Kit Library and set it up as a dependent library to your project, please [do that first](https://github.com/RadiusNetworks/campaignkit-documentation/download.md).
+
+
+2) Implement CampaignKitNotifier and CampaignKitManager
 
  * Open the Application class in your project. If you don't have one, create a class that extends Application.
 
  * Type 'extends Application implements CampaignKitNotifier" after the class name in its declaration.
 
- * Add all required methods for the CampaignKitNotifier. Quick-fix can do this for you.
+ * Add all required methods for the CampaignKitNotifier. Quick-fix can do this for you (move your cursor onto CampaignKitNotifer and press ALT + ENTER on Android Studio or CMD + 1 on Eclipse for mac).
 
  * Create an instance of the CampaignKitManager (i.e. CampaignKitManager _ckManager;).
 
@@ -57,7 +49,7 @@ Requirements for use:
     _ckManager.setNotifier(this);
 ``` 
 
-4) Handle didFindCampaign callback from CampaignKitNotifier
+3) Handle didFindCampaign callback from CampaignKitNotifier
 
 ```java
 
@@ -77,75 +69,6 @@ Requirements for use:
     // TODO: write custom code or use code from the Campaign Kit reference app
   }
 ```
-
-
-##If Using the Eclipse IDE:
-
-1) Download the [.tar.gz library file](https://s3.amazonaws.com/campaignkit-android/campaignkit-android-0.0.2.tar.gz)
-campaignkit-android
-===================
-
-Campaign Kit Library for Android Client
- 
-2) Add the library as a dependency to your project
-
- * Double click the .tar.gz file, this will produce a folder containing the library.
-
- * Import the library as an Android Project to your workspace.
-
- * Right-click the library and open the Properties menu.
-
- * Select the Android tab on the left side of the window.
-
- * Make sure the library has the "is Library" checkbox checked.
-
- * Right-click your project and open the Properties menu.
-
- * Select the Android tab on the left side of the window.
-
- * Add the campaignkit-android as a library.
- 
-
-3) Implement CampaignKitNotifier and CampaignKitManager
-
- * Create/Open the Application class in your project.
-
- * Type 'extends Application implements CampaignKitNotifier" in the class declaration.
-
- * Add all required methods. Quick-fix can do this for you.
-
- * Create an instance of the CampaignKitManager (i.e. CampaignKitManager _ckManager;).
-
- * In the Application class's onCreate() method, add the following code:
-
-```java
- 
-  _ckManager = CampaignKitManager.getInstanceForApplication(this);
-  _ckManager.start();
-  _ckManager.setNotifier(this);
-``` 
-
-4) Handle didFindCampaign callback from CampaignKitNotifier
-
-```java
-
-  @Override
-  public void didFindCampaign(Campaign campaign) {
-
-    //sending notification or alert, depending on whether app is in background or foreground
-    new CampaignNotificationBuilder(_mainActivity, campaign)
-    .setSmallIcon(R.drawable.ic_launcher)
-    .show();
-    
-    //displaying Campaign content
-    showCampaign(campaign);
-  }
-
-  public void showCampaign(Campaign campaign){
-    // TODO: write custom code or use code from the Campaign Kit reference app
-  }
-``` 
-
 
 
 
