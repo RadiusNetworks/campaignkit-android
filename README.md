@@ -110,7 +110,7 @@ Campaign Kit.
   // PROJECT_ROOT/app/build.gradle
   dependencies {
       compile 'com.android.support:appcompat-v7:+'
-      compile 'com.google.android.gms:play-services:+'
+      compile 'com.google.android.gms:play-services:5.+'
       compile fileTree(dir: 'libs', include: ['*.jar'])
       compile project(":campaignkit-android")
   }
