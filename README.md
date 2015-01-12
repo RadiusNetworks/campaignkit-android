@@ -3,9 +3,11 @@
 
 Requirements for use: 
 
-* Android API Level 18 or higher
+* Android API Level 18 or higher to use AltBeacon features.
 
-* Google Play Services library set as a dependency if using Geofencing features.
+* Android API Level 9 or higher to use Geofencing features.
+
+* Google Play Services library version 5.+ set as a dependency.
 
 * CampaignKit.properties file downloaded from campaignkit.radiusnetworks.com.
 
