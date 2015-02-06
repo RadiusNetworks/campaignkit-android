@@ -3,6 +3,8 @@
 
 Requirements for use: 
 
+* Minimum Android API Level 7.
+
 * Android API Level 18 or higher to use AltBeacon features.
 
 * Android API Level 9 or higher to use Geofencing features.
