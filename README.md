@@ -9,7 +9,7 @@ Requirements for use:
 
 * Android API Level 9 or higher to use Geofencing features.
 
-* Google Play Services library version 5.+ set as a dependency.
+* Google Play Services library set as a dependency. The library version must be within the range of 4.2 and 6.5.87.
 
 * CampaignKit.properties file downloaded from campaignkit.radiusnetworks.com.
 
@@ -75,20 +75,37 @@ public class MyApplication extends Application implements CampaignKitNotifier {
     }
 ```
 
-3) Handle didFindCampaign callback from CampaignKitNotifier
+3) Handle required callbacks from CampaignKitNotifier
 
 ```java
 
-  @Override
-  public void didFindCampaign(Campaign campaign) {
+@Override
+public void didFindCampaign(Campaign campaign) {
 
     //displaying Campaign content
     showCampaign(campaign);
-  }
+}
 
-  public void showCampaign(Campaign campaign){
+public void showCampaign(Campaign campaign){
     // TODO: write custom code or use code from the Campaign Kit reference app
-  }
+}
+
+@Override
+public void didSync() {
+    Log.i(TAG,"didSync.");
+}
+
+@Override
+public void didFailSync(Exception e) {
+    Log.e(TAG,"didFailSync.");
+    if (e != null)
+        e.printStackTrace();
+}
+
+@Override
+public void didDetectPlace(Place place, CKEventType event) {
+    Log.i(TAG,"didDetectPlace.  EventType: "+event.toString()+"  Place: "+place.toString());
+}
 ```
 
 
