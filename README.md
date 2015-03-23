@@ -20,10 +20,10 @@ Requirements for use:
 
 We've created some simple apps that demonstrate usage of the Campaign Kit Library.
 
-For Android Studio users:
+For Android Studio (recommended):
 https://github.com/RadiusNetworks/campaignkit-reference-android-studio
 
-For Eclipse users:
+For Eclipse:
 https://github.com/RadiusNetworks/campaignkit-reference-android
 
 
