@@ -1,3 +1,15 @@
+Version 0.4.1 - July 15, 2015
+-----------------------------
+
+Bug Fixes:
+
+- Fix issue where HTTPS requests were not made.
+- Fix issue where an update to the "CampaignKit.properties" file is not
+  recognized until the app is re-installed or the app data is cleared
+- Fix issue where kits with more than 20 places would crash due to a
+  `NullPointerException` when parsing the place ID.
+
+
 Version 0.4.0 - May 28, 2015
 ----------------------------
 
