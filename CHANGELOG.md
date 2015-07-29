@@ -1,3 +1,14 @@
+Version 0.5.0 - July 29, 2015
+-----------------------------
+
+Enhancements:
+
+- Add `CampaignKitManager#setPartnerIdentifier(String)` and
+  `CampaignKitManager#clearPartnerIdentifier()` to the public API. Allowing
+  the configuration of an additional custom identifier which is attached to
+  analytic events.
+
+
 Version 0.4.1 - July 15, 2015
 -----------------------------
 
