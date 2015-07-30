@@ -1,3 +1,13 @@
+Version 0.5.1 - July 30, 2015
+-----------------------------
+
+Bug Fixes:
+
+- Update to [Proximity Kit 0.7.0](https://github.com/RadiusNetworks/proximitykit-android/releases/tag/0.7.0)
+  fixing several issues with background jobs consuming all resources from
+  `AsyncTask`'s thread pools
+
+
 Version 0.5.0 - July 29, 2015
 -----------------------------
 
