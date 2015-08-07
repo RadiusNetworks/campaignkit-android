@@ -1,3 +1,17 @@
+Version 0.5.2 - August 7, 2015
+------------------------------
+
+Bug Fixes:
+
+- Set found at `Place` prior to calling `CampaignKitNotifier#didFindCampaign`
+- Update local campaign cache with trigger distance on sync
+- Improve recalculating local campaign cache recurrence times on sync
+- Synchronize persistence of local cache
+- Improve local campaign cache persistence frequency including saving on
+  `CampaignKitManager#stop`
+- Improve handling of local cache persistence on failed syncs
+
+
 Version 0.5.1 - July 30, 2015
 -----------------------------
 
