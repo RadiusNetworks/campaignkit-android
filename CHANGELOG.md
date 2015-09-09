@@ -1,3 +1,16 @@
+Version 0.5.3 - September 9, 2015
+---------------------------------
+
+Bug Fixes:
+
+- Remove deleted campaigns from local cache
+- Fix issue where `Campaign#hashCode` did not align with the general Java
+  contract for `Campaign#equals`
+- Parse JSON timestamps as UTC instead of using the device's time zone
+- Improve local campaign cache persistence format
+- Update to [Proximity Kit 0.8.0](https://github.com/RadiusNetworks/proximitykit-android/releases/tag/0.8.0)
+
+
 Version 0.5.2 - August 7, 2015
 ------------------------------
 
