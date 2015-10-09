@@ -1,3 +1,16 @@
+Version 0.5.4 - October 9, 2015
+-------------------------------
+
+Bug Fixes:
+
+- Fix `NullPointerException` when attempting to create a `Place` from data
+  which does not set a `type` value; this now raises a more helpful
+  `IllegalArgumentException` stating that the "type" field was missing
+- Fix `NullPointerException` when accessing `Place#getRssi` for regions or
+  `Place#name` when the values are `null`
+- Update local campaign cache persistence so it is more resilient to exceptions
+
+
 Version 0.5.3 - September 9, 2015
 ---------------------------------
 
