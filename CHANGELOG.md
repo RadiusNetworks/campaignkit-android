@@ -1,3 +1,53 @@
+Version 0.6.0 - November 11, 2015
+---------------------------------
+
+Enhancements:
+
+- Add `Place#getAttributes` for reading with custom metadata
+- Support custom `Configuration` on initialization of `CampaignKitManager` via
+  the factory `CampaignKitManager#getInstance(Context, Configuration)`
+- Support basic Campaign segmentation on sync using tags set in a
+  `Configuration` (segmentation is based on an `OR` of the tags)
+- Support disabling cellular data for network communications through a flag in
+  a `Configuration`
+
+Bug Fixes:
+
+- Fix race condition when accessing, the now deprecated (see below), factory
+  `CampaignKitManager#getInstanceForApplication(Context)` from multiple threads
+  prior to the initial creation of a `CampaignKitManager`
+- Improved network and battery savings by defaulting to syncing Status Kit
+  updates every 2 minutes instead of 30 seconds
+
+Deprecations:
+
+- Deprecate `CampaignKitManager#getInstanceForApplication(Context)` in favor of
+  `CampaignKitManager#getInstance(Context, Configuration)`
+- `CampaignKitManager` is not designed to be inherited. Several non-public
+  helper methods were previously exposed as part of the public API via the
+  `protected` access level modifier. This includes the following methods:
+
+  - `CampaignKitManager(Context)`
+  - `CampaignKitManager#getInstance()`
+  - `CampaignKitManager#callDidFindCampaign(Campaign, Place)`
+  - `CampaignKitManager#getAnalyticsURL()`
+  - `CampaignKitManager#getAuthToken()`
+  - `CampaignKitManager#getCampaignMap()`
+  - `CampaignKitManager#setCampaignMap(HashMap<String, Campaign>)`
+  - `CampaignKitManager#getPkManager()`
+  - `CampaignKitManager#getTriggeredCampaigns()`
+  - `CampaignKitManager#setTriggeredCampaigns(ArrayList<Campaign>)`
+  - `CampaignKitManager#pruneAndReturnExpiredCampaigns()`
+  - `CampaignKitManager#setCampaign(Campaign)`
+
+  You should treat these methods as private implementation details and not use
+  them. If you are using them we recommend moving away them them as soon as
+  possible.
+- Deprecate `CampaignKitManager#setPartnerIdentifier(String)` in favor of
+  `CampaignKitManager#getInstance(Context, Configuration)`
+- Deprecate `CampaignKitManager#clearPartnerIdentifier()`, no replacement
+
+
 Version 0.5.4 - October 9, 2015
 -------------------------------
 
