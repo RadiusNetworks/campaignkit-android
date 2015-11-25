@@ -1,3 +1,20 @@
+Version 0.6.1 - November 25, 2015
+---------------------------------
+
+Bug Fixes:
+
+- Properly read network input streams allowing for accurate traffic stats
+- Ensure network input streams are closed
+- Ensure network connections are closed
+- Starts and monitor known geofences when enabling geofences after already
+  starting the manager
+- Improve thread safety around `start()`, `stop()`, and enabling / disabling
+  geofences
+- Record minors for fully qualified regions in analytics
+- Properly record beacon analytics when ranging in regions
+- Covert times to UTC in analytics JSON
+
+
 Version 0.6.0 - November 11, 2015
 ---------------------------------
 
@@ -10,6 +27,7 @@ Enhancements:
   `Configuration` (segmentation is based on an `OR` of the tags)
 - Support disabling cellular data for network communications through a flag in
   a `Configuration`
+- Support Google Play services 8.x
 
 Bug Fixes:
 
