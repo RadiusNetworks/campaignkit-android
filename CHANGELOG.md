@@ -1,3 +1,13 @@
+Version 0.6.2 - February 23, 2016
+--------------------------------
+
+Bug Fixes:
+
+- Update to [AltBeacon/android-beacon-library](https://github.com/AltBeacon/android-beacon-library)
+  version [2.7.1](https://github.com/AltBeacon/android-beacon-library/releases/tag/2.7.1)
+  to fix a race condition which could cause scanning to stop
+
+
 Version 0.6.1 - November 25, 2015
 ---------------------------------
 
