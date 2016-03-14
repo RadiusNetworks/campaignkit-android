@@ -1,3 +1,30 @@
+Version 0.6.3 - March 14, 2016
+------------------------------
+
+Bug Fixes:
+
+- Fix issue where campaigns with trigger distances may not be found after
+  entering the region at a greater distance
+- Fix issue where campaigns with trigger distances may not be found after a
+  sync when the associated place was previously entered
+- Reflect place field updates after sync when calling `didDetectPlace` for
+  previously entered places
+- Fix `NullPointerException` caused when the `CampaignKitNotifier` is not set
+  or is set to `null`
+- Fix `NoClassDefFoundError` thrown when ranging beacons or sending
+  notifications on Android Honeycomb (API 13) and below
+- Fix a `NullPointerException` caused by stopping the manager while a failed
+  sync is being processed
+- Fix `NullPointerException` which occurs when enabling geofences for a kit
+  that has none setup
+- Fix a `NullPointerException` caused by disabling geofences while a sync is
+  being processed
+- Fix issue where removing the map from a kit does not clear monitored
+  geofences after a sync
+- Perform beacon and geofence monitoring/ranging changes prior to calling
+  `CampaignKitNotifier#didSync`
+
+
 Version 0.6.2 - February 23, 2016
 --------------------------------
 
