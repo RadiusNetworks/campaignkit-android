@@ -1,3 +1,25 @@
+Version 0.11.0 - July 21, 2016
+------------------------------
+
+Version number jumped so that it follows the our common Android release cycle.
+
+Enhancements:
+
+- Update to [Proximity Kit 0.11.0](https://github.com/RadiusNetworks/proximitykit-android/releases/tag/0.11.0)
+- Report OS platform (as Android) with analytics and syncs
+- Include local device bluetooth state on server sync
+- Guard against remote exception when processing ranging events
+
+Bug Fixes:
+
+- Fix `NullPointerException` edge case caused by a network issue on kit sync
+
+Breaking Changes:
+
+- Change the lib's manifest package name to `com.radiusnetworks.campaignkit`
+  from the previously incorrect `com.example.campaignkit_android`
+
+
 Version 0.6.3 - March 14, 2016
 ------------------------------
 
