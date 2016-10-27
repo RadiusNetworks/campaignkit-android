@@ -1,3 +1,14 @@
+## Version 0.12.2 - October 27, 2016
+
+Bug Fixes:
+
+- Fix crash caused by a race condition resulting in a
+  `ConcurrentModificationException` which may occur during a sync while near
+  beacons
+- Fix crash caused by a race condition resulting in a `NullPointerException`
+  which may occur during a sync while near beacons
+
+
 ## Version 0.12.1 - September 16, 2016
 
 Bug Fixes:
