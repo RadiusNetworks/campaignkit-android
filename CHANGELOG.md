@@ -1,3 +1,40 @@
+## Version 0.13.0 - May 19, 2017
+
+Enhancements:
+
+- Support Android 7.x (API 24 and 25)
+- Support Google Play 10.x
+- Improve sync efficiency by using E-Tags for conditional sync
+- Support toggling between running separate `CampaignKitManager` instances;
+  only a single instance is allowed to run at any one time
+
+Bug Fixes:
+
+- Fix analytic upload timestamp formatting
+- Fix edge case crash caused by parsing a malformed BLE packet
+- Fix UI slowness, and possible hang, in Android 6+ when Location Services
+  permissions are revoked while scanning
+
+  It is still recommended that apps always check permissions and BLE/Location
+  Services state when returning from the background. If the appropriate
+  permissions or services are not in the desired state either engage the user
+  or explicitly stop the `CampaignKitManager`.
+- Fix edge case `Context` leak with manager creation
+- Protect against `SecurityException` crashes caused by Samsung Knox
+- Fix crash caused by `IllegalStateException` when bluetooth adapter is off for
+  HTC devices on Android 6.0+
+- Prevent UI lag, and possible ANR (Application Not Responding) message, by not
+  blocking the main thread when starting or stopping a bluetooth scan
+- Don't start scanning when BLE feature is unavailable
+- Fix issue where campaign analytic state was lost when the app was force
+  closed or the device rebooted
+
+Breaking Changes:
+
+- Remove `android.permission.WAKE_LOCK` from manifest; the SDK does not use
+  this position and its inclusion forces an unnecessary permission onto apps
+
+
 ## Version 0.12.3 - November 7, 2016
 
 Bug Fixes:
