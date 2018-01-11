@@ -1,3 +1,78 @@
+## Version 0.14.0 - January 11, 2018
+
+Enhancements:
+
+- Support Android 8.0 (API 26)
+
+  Android 8.0 imposes new restrictions on BLE scanning while in the background.
+  This release changes the behavior on Android 8 to use the `JobScheduler` to
+  perform background scans. Due to limitations of the OS these background scan
+  jobs may not be scheduled faster than once every 15 minutes. However, when a
+  scan job completes, if no beacons are detected a low power scan will begin.
+  This scan will continue to run until any beacon is detected at which point
+  the `JobScheduler` will start again.
+
+  Foreground behavior remains the same as prior releases even on Android 8.
+  Additionally, these background changes only affects devices running Android
+  8.0 or newer. Devices running older Android versions will continue to use the
+  existing legacy behavior.
+
+  For more details see [Background Execution Limits](https://developer.android.com/about/versions/oreo/background.html)
+  and [Background Location Limits](https://developer.android.com/about/versions/oreo/background-location-limits.html).
+
+  Apps updating to this release need to bump their `com.android.support`
+  packages to 26.0.0 or newer due to changes in Android 8.0 requiring
+  notifications to be sent to channels. Apps using
+  `CampaignNotificationBuilder` should use the new
+  `CampaignNotificationBuilder#setChannelId(String channelId)` or
+  `CampaignNotificationBuilder#show(String channelId)` API for support with
+  channels.
+- Support Google Play 11.x
+- Expose `CampaignNotificationBuilder` intent `Bundle` keys storing information
+  about the triggering campaign and source
+- Use `android.support.v7.app.AlertDialog` for in app alerts built with
+  `CampaignNotificationBuilder`; falls back to `android.app.AlertDialog` for
+  apps which do not include the `appcompat-v7` lib or whose activities do not
+  use compatible themes
+- Add support to change notification theme with `CampaignNotificationBuilder#setTheme`
+- Add support for setting the notification text title and color through
+  `CampaignNotificationBuilder#setDefaultColor` and
+  `CampaignNotificationBuilder#setColor`
+- Hooks into location setting broadcasts for improved geofence based campaign
+  support on devices running KitKat (API 19) or higher
+- When location services is disabled, or otherwise stops providing location,
+  `CampaignKitNotifier#didDetectPlace` will now be called with event
+  `CKEventType.CKEventDidDetectStateUnknown`
+
+Bug Fixes:
+
+- Make `CampaignNotificationBuilder` alert dialog cancel button language aware
+  through `android.R.string.cancel`
+- Fixes an issue where after geofence based campaigns have been registered and
+  location services disabled, then re-enabled, not all campaigns may trigger
+  after the next sync
+- Fix race condition where toggling geofences on/off may have resulted in
+  inconsistent geofence registrations resulting in related campaigns not
+  triggering when expected
+- Fix triggering campaigns for active geofence (entered/inside) after sync
+- Ensure in-memory active geofences (those the device is currently within) have
+  attribute and campaign information updated after a sync.
+- Clean geofence state when geofences are disabled.
+- Improve triggering geofence based campaigns related to a variety of edge
+  cases around improper internal geofence tracking and location services state
+  changes
+- Fix triggering of recurring campaigns and future campaigns while inside
+  geofences
+
+Deprecations:
+
+- `Campaign#checkIsConnectedToRedemptionPlace` has been deprecated as it was
+  always an internal implementation detail that was accidentally exposed in the
+  published API
+- `Campaign#updateCampaign` has been deprecated as it was always an internal
+  implementation detail that was accidentally exposed in the published API
+
+
 ## Version 0.13.1 - November 30, 2017
 
 Bug Fixes:
