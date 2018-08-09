@@ -1,3 +1,39 @@
+## Version 0.15.0 - August 9, 2018
+
+Enhancements:
+
+- Support Android 8.1 (API 27)
+- Support Google Play 15.x
+
+Deprecations:
+
+- `Campaign#getIdAsInt` has been deprecated and will be removed in the next
+  major release.
+
+  While the ids happen to be integers today that may change in the future. Plan
+  now to assume ids may be any form of string value.
+
+Breaking Changes:
+
+- `Campaign#getAttributes` now returns an unmodifiable map
+
+  While this is technically a breaking change, as now modifications will throw
+  an `java.lang.UnsupportedOperationException`, it better reflects the intended
+  owner of the attributes. After a sync, the campaign is updated to match the
+  server. This includes resetting the attributes to only those from the server.
+- `Campaign#getEndAt` and `Campaign#getStartAt` now return copies of the dates
+
+  While this is technically a breaking change, as you can no longer mutate the
+  start and end times, these getters should always have returned defensive
+  copies.
+- `Campaign#equals` changes the behavior for campaigns with missing ids
+
+  When a `Campaign` instance lacks an id it will no longer be equal to other
+  instances that are also missing an id. Instead they will now only be equal to
+  themselves (i.e. the same object instance). `Campaign` equality is based on
+  the `id` and without this value comparison behavior is undefined.
+
+
 ## Version 0.14.0 - January 11, 2018
 
 Enhancements:
